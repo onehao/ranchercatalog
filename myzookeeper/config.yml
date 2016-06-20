@@ -1,0 +1,8 @@
+name: Apache Michael Wan
+description: |
+  (Experimental) Michael Wan cluster
+version: 3.4.6-rancher1
+category: Clustering
+maintainer: "Michael Wan <onehao333@gmail.com>"
+minimum_rancher_version: v0.56.0
+license: 
