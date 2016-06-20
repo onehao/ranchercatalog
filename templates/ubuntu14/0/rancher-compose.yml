@@ -1,0 +1,8 @@
+.catalog:
+  name: ubuntu
+  version: 14.04
+  description: |
+    (Experimental) Ubuntu.
+  minimum_rancher_version: v0.56.0
+  maintainer: "Michael Wan <onehao333@gmail.com>"
+

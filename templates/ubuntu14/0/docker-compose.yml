@@ -1,0 +1,7 @@
+services:
+  ubuntu:
+    build: .
+    ports:
+     - "8022:22"
+    volumes:
+     - .:/ubuntuvalume
