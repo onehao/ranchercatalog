@@ -2,6 +2,8 @@ bootstrap-hdfs:
   image: rancher/hadoop-base:v0.3.5
   labels:
     io.rancher.container.start_once: true
+    # Host MUST have the label `key1=value1`
+    io.rancher.scheduler.affinity:host_label: type=real
   command: 'su -c "sleep 20 && exec /bootstrap-hdfs.sh" hdfs'
   net: "container:namenode-primary"
   volumes_from:
@@ -13,11 +15,15 @@ sl-namenode-config:
     NODETYPE: "hdfs"
   volumes_from:
     - namenode-primary-data
+  labels:
+    io.rancher.scheduler.affinity:host_label: type=real
 namenode-config:
   image: rancher/hadoop-config:v0.3.5
   net: "container:namenode-primary"
   volumes_from:
     - namenode-primary-data
+  labels:
+    io.rancher.scheduler.affinity:host_label: type=real
 namenode-primary:
   image: rancher/hadoop-base:v0.3.5
   command: 'su -c "sleep 15 && /usr/local/hadoop-2.7.1/bin/hdfs namenode" hdfs'
@@ -30,6 +36,7 @@ namenode-primary:
     io.rancher.container.hostname_override: container_name
     io.rancher.scheduler.affinity:container_label_soft: io.rancher.stack_service.name=$${stack_name}/yarn-resourcemanager,io.rancher.stack_service.name=$${stack_name}/jobhistory-server
     io.rancher.scheduler.affinity:container_label_ne: io.rancher.stack_service.name=$${stack_name}/datanode
+    io.rancher.scheduler.affinity:host_label: type=real
 namenode-primary-data:
   image: rancher/hadoop-base:v0.3.5
   volumes:
@@ -38,6 +45,7 @@ namenode-primary-data:
   net: none
   labels:
     io.rancher.container.start_once: true
+    io.rancher.scheduler.affinity:host_label: type=real
   command: '/bootstrap-local.sh'
 
 
@@ -46,6 +54,8 @@ datanode-config:
   net: "container:datanode"
   volumes_from:
     - datanode-data
+  labels:
+    io.rancher.scheduler.affinity:host_label: type=real
 datanode-data:
   image: rancher/hadoop-base:v0.3.5
   net: none
@@ -54,12 +64,14 @@ datanode-data:
     - '/tmp'
   labels:
     io.rancher.container.start_once: true
+    io.rancher.scheduler.affinity:host_label: type=real
   command: '/bootstrap-local.sh'
 datanode:
   image: rancher/hadoop-base:v0.3.5
   volumes_from:
     - datanode-data
   labels:
+    io.rancher.scheduler.affinity:host_label: type=real
     io.rancher.sidekicks: datanode-config,datanode-data
     io.rancher.container.hostname_override: container_name
     io.rancher.scheduler.affinity:container_label_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
@@ -73,6 +85,8 @@ yarn-nodemanager-config:
   net: "container:yarn-nodemanager"
   volumes_from:
     - yarn-nodemanager-data
+  labels:
+    io.rancher.scheduler.affinity:host_label: type=real
 yarn-nodemanager-data:
   image: rancher/hadoop-base:v0.3.5
   net: none
@@ -81,6 +95,7 @@ yarn-nodemanager-data:
     - '/tmp'
   labels:
     io.rancher.container.start_once: true
+    io.rancher.scheduler.affinity:host_label: type=real
   command: '/bootstrap-local.sh'
 yarn-nodemanager:
   image: rancher/hadoop-base:v0.3.5
@@ -89,6 +104,7 @@ yarn-nodemanager:
   ports:
     - '8042:8042'
   labels:
+    io.rancher.scheduler.affinity:host_label: type=real
     io.rancher.container.hostname_override: container_name
     io.rancher.sidekicks: yarn-nodemanager-config,yarn-nodemanager-data
     io.rancher.scheduler.affinity:container_label_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
@@ -104,6 +120,8 @@ jobhistory-server-config:
   net: "container:jobhistory-server"
   volumes_from:
     - jobhistory-server-data
+  labels:
+    io.rancher.scheduler.affinity:host_label: type=real
 jobhistory-server-data:
   image: rancher/hadoop-base:v0.3.5
   net: none
@@ -112,6 +130,7 @@ jobhistory-server-data:
     - '/tmp'
   labels:
     io.rancher.container.start_once: true
+    io.rancher.scheduler.affinity:host_label: type=real
   command: '/bootstrap-local.sh'
 jobhistory-server:
   image: rancher/hadoop-base:v0.3.5
@@ -124,6 +143,7 @@ jobhistory-server:
     - '10020:10020'
     - '19888:19888'
   labels:
+    io.rancher.scheduler.affinity:host_label: type=real
     io.rancher.sidekicks: jobhistory-server-config,jobhistory-server-data
     io.rancher.container.hostname_override: container_name
     io.rancher.scheduler.affinity:container_label: io.rancher.stack_service.name=$${stack_name}/yarn-resourcemanager,io.rancher.stack_service.name=$${stack_name}/namenode-primary
@@ -134,6 +154,8 @@ yarn-resourcemanager-config:
   net: "container:yarn-resourcemanager"
   volumes_from:
     - yarn-resourcemanager-data
+  labels:
+    io.rancher.scheduler.affinity:host_label: type=real
 sl-yarn-resourcemanager-config:
   image: rancher/hadoop-followers-config:v0.3.5
   net: "container:yarn-resourcemanager"
@@ -141,6 +163,8 @@ sl-yarn-resourcemanager-config:
     NODETYPE: "yarn"
   volumes_from:
     - yarn-resourcemanager-data
+  labels:
+    io.rancher.scheduler.affinity:host_label: type=real
 yarn-resourcemanager-data:
   image: rancher/hadoop-base:v0.3.5
   net: none
@@ -149,6 +173,7 @@ yarn-resourcemanager-data:
     - '/tmp'
   labels:
     io.rancher.container.start_once: true
+    io.rancher.scheduler.affinity:host_label: type=real
   command: '/bootstrap-local.sh'
 yarn-resourcemanager:
   image: rancher/hadoop-base:v0.3.5
@@ -159,6 +184,7 @@ yarn-resourcemanager:
   links:
     - 'namenode-primary:namenode'
   labels:
+    io.rancher.scheduler.affinity:host_label: type=real
     io.rancher.sidekicks: yarn-resourcemanager-config,sl-yarn-resourcemanager-config,yarn-resourcemanager-data
     io.rancher.container.hostname_override: container_name
     io.rancher.scheduler.affinity:container_label_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name},io.rancher.stack_service.name=$${stack_name}/datanode,io.rancher.stack_service.name=$${stack_name}/yarn-nodemanager
