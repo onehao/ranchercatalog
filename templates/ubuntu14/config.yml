@@ -1,8 +1,8 @@
-name: Apache Zookeeper
+name: Ubuntu 
 description: |
-  (Experimental) Zookeeper cluster
-version: 3.4.6-rancher1
+  (Experimental) Ubuntu 14
+version: 14.04
 category: Clustering
-maintainer: "Raul Sanchez <rawmind@gmail.com>"
+maintainer: "Michael Wan <onehao333@gmail.com>"
 minimum_rancher_version: v0.56.0
 license: 
