@@ -3,6 +3,6 @@ description: |
   Git Lab
 version: 8.8.5
 category: Clustering
-maintainer: "Michaeal Wan <onehao333@gmail.com>"
+maintainer: "Michael Wan <onehao333@gmail.com>"
 minimum_rancher_version: v0.56.0
 license: 
