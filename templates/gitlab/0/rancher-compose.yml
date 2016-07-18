@@ -1,7 +1,44 @@
 .catalog:
-  name: Gitlab
-  version: 8.8.5
+  name: Gitlab Community
+  version: 8.5.1-0
   description: |
-    Git Lab.
+    Gitlab CE is a free GitHub alternative
   minimum_rancher_version: v0.56.0
-  maintainer: "Michael Wan <onehao333@gmail.com>"
+  maintainer: "Alexis Ducastel <alexis@ducastel.net>"
+  uuid: gitlab-0
+  questions:
+    - variable: "gitlab_hostname"
+      description: "Gitlab hostname"
+      label: "Hostname:"
+      required: true
+      default: "git.example.com"
+      type: "string"
+    - variable: public_port
+      description: "public port to access the wordpress site"
+      label: "Public Port"
+      required: true
+      default: "80"
+      type: "int"
+    - variable: public_ssl
+      description: "public port to ssh"
+      label: "Public SSH Port"
+      required: true
+      default: "22"
+      type: "int"
+
+gitlab-server:
+  scale: 1
+  retain_ip: true
+  health_check:
+    port: ${public_port}
+    interval: 30000
+    unhealthy_threshold: 3
+    strategy: recreate
+    response_timeout: 2000
+    healthy_threshold: 2
+
+gitlab-data:
+  scale: 1
+  retain_ip: true
+
+  
