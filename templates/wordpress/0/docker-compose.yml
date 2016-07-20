@@ -4,8 +4,12 @@ wordpress:
     - db:mysql
   ports:
     - ${public_port}:80
+  labels:
+    - io.rancher.scheduler.affinity:host_label: type=real
 
 db:
   image: mariadb
   environment:
     MYSQL_ROOT_PASSWORD: example
+  labels:
+    - io.rancher.scheduler.affinity:host_label: type=real
