@@ -3,4 +3,4 @@ kali:
   ports:
    - "${ssh_port}:22"
   volumes:
-   - .:/kalivalume
+   - /home/data2/kalivolume
