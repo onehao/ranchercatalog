@@ -1,5 +1,5 @@
 .catalog:
-  name: linuxkonsult/kali-metasploit 
+  name: kali
   version: latest
   description: |
     Kali base image with metasploit.
