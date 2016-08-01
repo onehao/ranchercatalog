@@ -3,11 +3,10 @@
 
 ### Info:
 
- This template creates, ubuntu 14.
+ This template creates, Kali base image with metasploit .
  
  
 ### Usage:
 
- ubuntu 14 with port 22 mapping to 8022
  mail to onehao333@gmail.com if needed.
 
