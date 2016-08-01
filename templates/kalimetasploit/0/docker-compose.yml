@@ -1,7 +1,6 @@
-services:
-  kali:
-    image: linuxkonsult/kali-metasploit
-    ports:
-     - "${ssh_port}:22"
-    volumes:
-     - .:/kalivalume
+kali:
+  image: linuxkonsult/kali-metasploit
+  ports:
+   - "${ssh_port}:22"
+  volumes:
+   - .:/kalivalume
