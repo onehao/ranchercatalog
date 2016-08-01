@@ -11,8 +11,7 @@
       label: "ssh Port"
       required: true
       default: "8122"
-      type: "int"
-  questions:    
+      type: "int"  
     - variable: vnc_port
       description: "vnc port to access the kali"
       label: "vnc Port"
