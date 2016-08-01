@@ -2,5 +2,6 @@ kali:
   image: linuxkonsult/kali-metasploit
   ports:
    - "${ssh_port}:22"
+   - "${vnc_port}:5901"
   volumes:
    - /home/data2/kalivolume
