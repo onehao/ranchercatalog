@@ -1,0 +1,15 @@
+.catalog:
+  name: Kalimetasploit 
+  version: latest
+  description: |
+    Kali base image with metasploit.
+  minimum_rancher_version: v0.56.0
+  maintainer: "Michael Wan <onehao333@gmail.com>"
+  questions:    
+    - variable: ssh_port
+      description: "ssh port to access the kali"
+      label: "ssh Port"
+      required: true
+      default: "8122"
+      type: "int"
+

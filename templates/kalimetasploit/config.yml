@@ -1,0 +1,8 @@
+name: Kali base image with metasploit 
+description: |
+  Kali base image with metasploit 
+version: latest
+category: OS
+maintainer: "Michael Wan <onehao333@gmail.com>"
+minimum_rancher_version: v0.56.0
+license: 

@@ -1,0 +1,7 @@
+services:
+  ubuntu:
+    build: .
+    ports:
+     - "${ssh_port}:22"
+    volumes:
+     - .:/kalivalume
