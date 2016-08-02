@@ -1,0 +1,7 @@
+kali:
+  image: kalilinux/kali-linux-docker
+  ports:
+   - "${ssh_port}:22"
+   - "${vnc_port}:5901"
+  volumes:
+   - /home/data2/kali2volume
