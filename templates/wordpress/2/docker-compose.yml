@@ -1,24 +1,5 @@
-wordpress:
-  image: wordpress
-  links:
-    - db:mysql
-  ports:
-    - ${public_port}:80
-  labels:
-    io.rancher.scheduler.affinity:host_label: type=real
-  net: bridge
-
 db:
   image: mariadb
-  environment:
-    MYSQL_ROOT_PASSWORD: example
-  labels:
-    io.rancher.scheduler.affinity:host_label: type=real
-  net: bridge
-
-
-db:
-  image: mysql:5.7
   volumes:
     - "./.data/db:/var/lib/mysql"
   environment:
