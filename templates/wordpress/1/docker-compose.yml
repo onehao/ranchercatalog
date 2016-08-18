@@ -6,7 +6,7 @@ wordpress:
     - ${public_port}:80
   labels:
     io.rancher.scheduler.affinity:host_label: type=real
-  net: bridge
+  net: host
 
 db:
   image: mariadb
@@ -14,4 +14,4 @@ db:
     MYSQL_ROOT_PASSWORD: example
   labels:
     io.rancher.scheduler.affinity:host_label: type=real
-  net: bridge
+  net: host
