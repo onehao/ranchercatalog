@@ -1,16 +1,37 @@
 .catalog:
-  name: "Wordpress"
-  version: "v0.1-educaas1"
-  description: "Blog tool, publishing platform and CMS"
-  uuid: Wordpress-0
+  name: "docker EFK"
+  version: "v0.9"
+  description: "EFK setup with docker, docker-compose."
+  uuid: dockerefk09
   minimum_rancher_version: v0.51.0
   questions:    
-    - variable: public_port
-      description: "public port to access the wordpress site"
-      label: "Public Port"
+    - variable: es_port
+      description: "ES port to access the EFK site"
+      label: "ES Port"
+      required: true
+      default: "9200"
+      type: "int"
+    - variable: kibana_port
+      description: "kibana port to access the EFK site"
+      label: "Kibana Port"
+      required: true
+      default: "5601"
+      type: "int"
+    - variable: fluentd_port
+      description: "fluentd port to access the EFK site"
+      label: "fluentd Port"
+      required: true
+      default: "24224"
+      type: "int"
+    - variable: nginx_port
+      description: "nginx port to access the EFK site"
+      label: "nginx Port"
       required: true
       default: "80"
       type: "int"
-
-
-wordpress:
+    - variable: nodeapp_port
+      description: "nodeapp port to access the EFK site"
+      label: "nodeapp Port"
+      required: true
+      default: "8080"
+      type: "int"
