@@ -1,0 +1,5 @@
+name: docker EFK
+description: |
+  EFK setup with docker, docker-compose.
+version: v0.9
+category: Monitor
