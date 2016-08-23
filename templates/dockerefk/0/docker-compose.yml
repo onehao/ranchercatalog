@@ -14,7 +14,7 @@ kibana:
 fluentd:
   build: fluentd/
   volumes:
-    - /var/lib/docker/containers:/var/lib/docker/containers
+    - /home/data/mnt/docker/containers:/var/lib/docker/containers
   links:
     - elasticsearch
   ports:
