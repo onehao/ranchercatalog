@@ -1,0 +1,29 @@
+db:
+  image: mariadb
+  volumes:
+    - "./.data/db:/var/lib/mysql"
+  environment:
+    MYSQL_ROOT_PASSWORD: wordpress
+    MYSQL_DATABASE: wordpress
+    MYSQL_USER: wordpress
+    MYSQL_PASSWORD: wordpress
+  labels:
+    io.rancher.scheduler.affinity:host_label: type=real
+  net: bridge
+  logging:
+    driver: syslog
+
+wordpress:
+  image: wordpress:latest
+  links:
+    - db
+  ports:
+    - ${public_port}:80
+  environment:
+    WORDPRESS_DB_HOST: db:3306
+    WORDPRESS_DB_PASSWORD: wordpress
+  labels:
+    io.rancher.scheduler.affinity:host_label: type=real
+  net: bridge
+  logging:
+    driver: syslog
