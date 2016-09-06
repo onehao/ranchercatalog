@@ -6,7 +6,10 @@ wordpress:
     - ${public_port}:80
   labels:
     io.rancher.scheduler.affinity:host_label: type=real
-  log_driver: fluentd
+  log_driver: 'fluentd'
+  log_opt:
+    fluentd-address: onehao.pw:24224
+    fluentd-tag: docker.{{.FullID}}s
 
 db:
   image: mariadb
@@ -14,4 +17,7 @@ db:
     MYSQL_ROOT_PASSWORD: example
   labels:
     io.rancher.scheduler.affinity:host_label: type=real
-  log_driver: fluentd
+  log_driver: 'fluentd'
+  log_opt:
+    fluentd-address: onehao.pw:24224
+    fluentd-tag: docker.{{.FullID}}
