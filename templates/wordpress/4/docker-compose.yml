@@ -9,7 +9,7 @@ wordpress:
   log_driver: 'fluentd'
   log_opt:
     fluentd-address: onehao.pw:24224
-    fluentd-tag: docker.{{.FullID}}s
+    fluentd-tag: docker.{{.FullID}}
 
 db:
   image: mariadb
