@@ -10,8 +10,7 @@ db:
   labels:
     io.rancher.scheduler.affinity:host_label: type=real
   net: bridge
-  logging:
-    driver: syslog
+  log_driver: fluentd
 
 wordpress:
   image: wordpress:latest
@@ -25,5 +24,4 @@ wordpress:
   labels:
     io.rancher.scheduler.affinity:host_label: type=real
   net: bridge
-  logging:
-    driver: syslog
+  log_driver: fluentd
