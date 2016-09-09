@@ -1,5 +1,5 @@
 wordpress:
-  image: doesnotexit
+  build: http://onehao.pw:9001/test/Dockerfile
   ports:
     - ${public_port}:24224
   labels:
