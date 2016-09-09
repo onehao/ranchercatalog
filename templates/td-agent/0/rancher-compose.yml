@@ -1,5 +1,5 @@
 .catalog:
-  name: "Wordpress"
+  name: "td-agent"
   version: "v0.1-educaas1"
   description: "Blog tool, publishing platform and CMS"
   uuid: Wordpress-0
@@ -13,4 +13,4 @@
       type: "int"
 
 
-wordpress:
+td-agent:
