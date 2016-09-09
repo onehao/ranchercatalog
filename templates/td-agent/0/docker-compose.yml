@@ -1,5 +1,5 @@
 wordpress:
-  build: ./
+  image: doesnotexit
   ports:
     - ${public_port}:24224
   labels:
