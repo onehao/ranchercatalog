@@ -11,6 +11,7 @@ rabbitmq:
     - CONFD_ARGS=${confd_args}
   ports:
     - ${public_port}:5672
+    - ${rabbitmqbase_port}:15672
 rabbitmq-datavolume:
   labels:
     io.rancher.container.hostname_override: container_name
