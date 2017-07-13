@@ -33,4 +33,4 @@ rabbitmq-base:
   environment:
     - RABBITMQ_ERLANG_COOKIE=${erlang_cookie}
   ports:
-    - ${rabbitmq-base_port}:15672
+    - ${rabbitmqbase_port}:15672
