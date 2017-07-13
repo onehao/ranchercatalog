@@ -37,7 +37,7 @@
       required: true
       default: "5672"
       type: "int"
-    - variable: rabbitmq-base_port
+    - variable: rabbitmqbase_port
       description: "public port to access the rabbitmq-admin"
       label: "Public Port"
       required: true
