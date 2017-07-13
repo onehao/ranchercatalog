@@ -33,5 +33,3 @@ rabbitmq-base:
     - /opt/rancher/bin/run.sh
   environment:
     - RABBITMQ_ERLANG_COOKIE=${erlang_cookie}
-  ports:
-    - ${rabbitmqbase_port}:15672
